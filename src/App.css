@@ -1,42 +1,82 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+header{
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.564);
+  align-items: center;
+  padding: 1rem;
+}
+.Cabeza{
+  background-color: transparent;
+  display: flex;
+  color: white;
+  font-size: 2rem;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.btn{
+  background-color: #efe9e9;
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  
+  box-sizing: content-box;
+  flex-flow: row wrap;
+  transition: all 0.5s;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.btn:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(69, 14, 209, 0.5);
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.producto{
+  width: 200px;
+  padding: 10px;
+  border: 2px;
+}
+.imagen{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.card{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+  gap: 10px 20px;
+  padding: 10px;
+  margin: 5px;
+  box-shadow: 0 0 10px rgba(209, 14, 14, 0.5);
+  transition: all 0.5s;
+  flex-flow: row wrap;
+  box-sizing: content-box;
+}
+.card-body{
+  flex-grow: 1;
+}
+.card:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(209, 14, 14, 0.5);
+}
+.descripcion {
+  font-size: 0.9rem;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 5px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
