@@ -78,5 +78,9 @@ header{
   text-overflow: ellipsis;
   margin-top: 5px;
 }
+.input{
+  padding: 1rem;
+  justify-content: end;
+}
 
 
