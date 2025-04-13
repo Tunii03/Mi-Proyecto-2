@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function EditarFormulario({producto, onGuardar}){
+function EditarFormulario({producto, onGuardar, onCancelar}){
 
     const[nombre, setNombre] = useState(producto.nombre);
     const[precio, setPrecio] = useState(producto.precio);
@@ -15,20 +15,22 @@ function EditarFormulario({producto, onGuardar}){
         <form onSubmit={manejarGuardar}>
             <input
                 value={nombre}
-                onChange={e => setNombre(e.target.value)}
+                onChange={(e) => setNombre(e.target.value)}
             />
             <input
                 type="number"
                 value={precio}
-                onChange={e => setPrecio(Number(e.target.value))}
+                onChange={(e) => setPrecio(Number(e.target.value))}
                 placeholder="Precio"
             />
             <input
                 type="number"
                 value={cantidad}
-                onChange={e => setCantidad(Number(e.target.value))}
+                onChange={(e) => setCantidad(Number(e.target.value))}
                 placeholder="Cantidad"
             />
+            <button type="submit">Guardar</button>
+            <button type="button" onClick={onCancelar}>Cancelar</button>
 
         </form>
     );

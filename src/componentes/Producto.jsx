@@ -1,33 +1,36 @@
 import { useState } from "react";
 import EditarFormulario from "./EditarFormulario";   
 
-export default function Producto({producto, eliminar, editar}){
-
-    const[editando, setEditando] = useState(false);
-
+function Producto({producto, onEliminar, onEditar,  onToggleComprado}){
+    const [editando, setEditando] = useState(false);
+    
     return(
-        <li>
-            {editando ? (
-                <EditarFormulario
-                    producto={producto}
-                    onGuardar={(nuevo) => {
-                        editar(nuevo);
-                        setEditando(false);
-                    }}
-            
-            />
-        ) : (
-            <>
-            <strong>{producto.nombre}</strong> -
-            Cantidad: {producto.cantidad} -
-            Precio: ${producto.precio}
-            <button onClick={() =>setEditando(true)}>Editar</button>
-            <button onClick={eliminar}>Eliminar</button>
-
-            </>
-        )}
-        </li>
+        <div>
+          {editando ? ( 
+            <EditarFormulario
+                producto={producto}
+                onGuardar={(productoEditado) => {
+                    onEditar(productoEditado);
+                    setEditando(false);
+                }}
+                onCancelar={() => setEditando(false)}
+                />
+            ) : (
+            <div>
+                <span>
+                    <strong>{producto.nombre}</strong> - ${producto.precio} - {producto.cantidad}
+                </span>
+                
+                <button onClick={() =>setEditando(true)}>Editar</button>
+                <button onClick={() => onEliminar(producto.id)}>Eliminar</button>
+                <button onClick={onToggleComprado}>
+                    {producto.comprado ? "Desmarcar" : "Marcar como comprado"}
+                </button>
+            </div>
+            )}
+        </div>
     );
 }
+export default Producto;
 
 

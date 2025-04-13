@@ -1,18 +1,21 @@
 import Producto from "./Producto";
+import EditarFormulario from "./EditarFormulario";
 import '../App.css';
 
-function ListaDeProductos({productos, eliminar, editar}){
+function ListaDeProductos({productos, onEliminar, onEditar,onToggleComprado}){
+
     return(
-        <ul>
-            {productos.map((producto, index)=>(
+        <div>
+            {productos.map((producto, index)=> (
                 <Producto
-                    key={index}
-                    producto={producto}
-                    eliminar={() => eliminar(index)}
-                    editar={(nuevo) => editar(index, nuevo)}
+                key={index}
+                producto={producto}
+                onEliminar={() => onEliminar(index)}
+                onEditar={(nuevoProducto) => onEditar(index, nuevoProducto)}
+                onToggleComprado={() => onToggleComprado(index)}
                 />
             ))}
-        </ul>
+                </div>
     );
 }
 export default ListaDeProductos;

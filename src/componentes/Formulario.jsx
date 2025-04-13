@@ -1,24 +1,40 @@
 import { useState } from "react";
 import '../App.css';
 
-function Formulario({agregar}){
-    const [input, setInput] = useState('');
+function Formulario({onAgregar}){
+    const [nombre, setNombre] = useState('');
+    const [precio, setPrecio] = useState(0);
+    const [cantidad, setCantidad] = useState(1);
 
     const manejarSubmit = (e) => {
         e.preventDefault();
-        agregar(input);
-        setInput('');
+        if (!nombre ||precio <=0 || cantidad<=0) return;
+        onAgregar({nombre, precio: Number(precio), cantidad: Number(cantidad)});
+        setNombre('');
+        setPrecio(0);
+        setCantidad(1);
     };
 
     return(
         <form onSubmit={manejarSubmit}>
-            <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Nombre del Producto"
-                />
-                <button type="submit">Agregar a la Lista</button>
+        <input
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            placeholder="Nombre del producto"
+             />
+        <input
+            type="number"
+            value={precio}
+            onChange={(e) => setPrecio(Number(e.target.value))}
+            placeholder="Precio"
+        />
+        <input
+            type="number"
+            value={cantidad}
+            onChange={(e) => setCantidad(Number(e.target.value))}
+            placeholder="Cantidad"
+        />
+        <button type="submit">Agregar</button>
         </form>
     );
 }
