@@ -12,7 +12,7 @@ function EditarFormulario({producto, onGuardar, onCancelar}){
     };
     
     return(
-        <form onSubmit={manejarGuardar}>
+        <form onSubmit={manejarGuardar} className="formulario">
             <input
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}

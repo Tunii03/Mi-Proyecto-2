@@ -36,10 +36,10 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='container'>
     <Cabeza title='Lista de Compras'/>
     <Formulario onAgregar={agregarProducto}/>
-    <button onClick={() => setMostrarLista(!mostrarLista)}>
+    <button className='toggle-list-btn' onClick={() => setMostrarLista(!mostrarLista)}>
       {mostrarLista ? "Ocultar Lista" : "Mostrar Lista"}
     </button>
     {mostrarLista && (

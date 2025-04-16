@@ -5,7 +5,7 @@ function Producto({producto, onEliminar, onEditar,  onToggleComprado}){
     const [editando, setEditando] = useState(false);
     
     return(
-        <div>
+        <div className="producto">
           {editando ? ( 
             <EditarFormulario
                 producto={producto}
@@ -17,15 +17,19 @@ function Producto({producto, onEliminar, onEditar,  onToggleComprado}){
                 />
             ) : (
             <div>
-                <span>
+                <span
+                    className={
+                        producto.comprado ? "tachado" : ""
+                    }>
                     <strong>{producto.nombre}</strong> - ${producto.precio} - {producto.cantidad}
                 </span>
-                
-                <button onClick={() =>setEditando(true)}>Editar</button>
-                <button onClick={() => onEliminar(producto.id)}>Eliminar</button>
-                <button onClick={onToggleComprado}>
+            <div className="botones">
+                <button onClick={() =>setEditando(true)} className="btn editar">Editar</button>
+                <button onClick={() => onEliminar(producto.id)} className="btn eliminar">Eliminar</button>
+                <button onClick={onToggleComprado} className="btn comprar">
                     {producto.comprado ? "Desmarcar" : "Marcar como comprado"}
                 </button>
+            </div>
             </div>
             )}
         </div>

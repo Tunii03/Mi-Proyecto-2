@@ -3,8 +3,8 @@ import '../App.css';
 
 function Formulario({onAgregar}){
     const [nombre, setNombre] = useState('');
-    const [precio, setPrecio] = useState(0);
-    const [cantidad, setCantidad] = useState(1);
+    const [precio, setPrecio] = useState('');
+    const [cantidad, setCantidad] = useState('');
 
     const manejarSubmit = (e) => {
         e.preventDefault();
@@ -16,7 +16,7 @@ function Formulario({onAgregar}){
     };
 
     return(
-        <form onSubmit={manejarSubmit}>
+        <form onSubmit={manejarSubmit} className="formulario">
         <input
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
